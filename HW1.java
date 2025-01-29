@@ -86,9 +86,19 @@ public class HW1 {
          * found in the linked-list that is less than thr parameter value passed.
          */
         public void removeElementsLT ( int ltValue ) {
-
-            // YOUR CODE GOES HERE
-
+            node temp = head;
+            node prev = null;
+            while (temp != null){
+                if(temp.data < ltValue){
+                    if (prev == null) // if head is removed, set the next to head
+                        head = temp.next; 
+                    else 
+                        prev.next = temp.next;
+                }
+                prev = temp;
+                temp = temp.next
+            }
+            
             return;
         }
 
@@ -99,7 +109,12 @@ public class HW1 {
          */
 
         public void removeElement ( int value ) {
-
+            boolean removed = false;
+            while(!removed){
+                if (current.data == value)
+                    remove
+            }
+            
             // YOUR CODE GOES HERE
 
             return;
