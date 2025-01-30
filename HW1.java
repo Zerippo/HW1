@@ -85,21 +85,22 @@ public class HW1 {
          * The method will invoke the method removeElements for each element
          * found in the linked-list that is less than thr parameter value passed.
          */
-        public void removeElementsLT ( int ltValue ) {
-            node temp = head;
-            node prev = null;
-            while (temp != null){
-                if(temp.data < ltValue){
-                    if (prev == null) // if head is removed, set the next to head
-                        head = temp.next; 
-                    else 
-                        prev.next = temp.next;
+        public void removeElementsLT(int ltValue) {
+            Node temp = head;
+            Node prev = null;
+
+            while (temp != null) {
+                if (temp.data < ltValue) {
+                    if (temp == head) {
+                        head = temp.next;  // Remove head node
+                    } else {   
+                        prev.next = temp.next;   // Remove non-head node
+                    }
+                } else {
+                    prev = temp; // No removal
                 }
-                prev = temp;
-                temp = temp.next
+                temp = temp.next;
             }
-            
-            return;
         }
 
 
