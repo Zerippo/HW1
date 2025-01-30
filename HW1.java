@@ -110,13 +110,21 @@ public class HW1 {
          */
 
         public void removeElement ( int value ) {
-            boolean removed = false;
-            while(!removed){
-                if (current.data == value)
-                    remove
+            while (head != null && head.data == value) {
+                head = head.next;
             }
             
-            // YOUR CODE GOES HERE
+            Node temp = head;
+            Node prev = null;
+            
+            while(temp != null){
+                if (temp.data == value){
+                    prev.next = temp.next;
+                } else {
+                    prev = temp;
+                }
+                temp = temp.next;
+            }
 
             return;
         }
