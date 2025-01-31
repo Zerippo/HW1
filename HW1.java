@@ -180,12 +180,19 @@ public class HW1 {
          * The method should utilize the provided Stack class.
          */
         public static boolean isPalindrome(String input) {
-
+            
             Stack<Character> stack = new Stack<>();
             input = input.toLowerCase().replaceAll("\\s+", "");
+            boolean palindrome = true;
 
-            // Your CODE GOES HERE
-            return false;
+            for (char c : input.toCharArray()) {
+                stack.push(c);
+            }
+            for (int i = 0; i < input.length(); i++)
+                if (input.charAt(i) != stack.pop())
+                    palindrome = false;
+            
+            return palindrome;
         }
 
 
