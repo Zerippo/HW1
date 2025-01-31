@@ -179,23 +179,20 @@ public class HW1 {
          *
          * The method should utilize the provided Stack class.
          */
-        public static int findLargestK(Stack<Integer> stack, int k) {
+        public static boolean isPalindrome(String input) {
+            boolean palindrome = true;
 
-            Stack<Integer> temp = new Stack<>();
-            int largestIndex = 0;
-            int currentIndex = 0;
             
-            while (!stack.isEmpty())
-                temp.push(stack.pop());
-            while (!temp.isEmpty()){
-                if (temp.peek() == k){
-                    largestIndex = currentIndex;
-                }
-                currentIndex++;
-                stack.push(temp.pop());
+            Stack<Character> stack = new Stack<>();
+            input = input.toLowerCase().replaceAll("\\s+", "");
+
+            for (char c : input.toCharArray()) {
+                stack.push(c);
             }
-                
-            return largestIndex;
+            for (int i = 0; i < input.length(); i++)
+                if (input.charAt(i) != stack.pop())
+                    palindrome = false;
+            return palindrome;
         }
 
 
@@ -216,8 +213,22 @@ public class HW1 {
          */
         public static int findLargestK(Stack<Integer> stack, int k) {
 
-            // YOUR CODE GOES HERE
-            return -1;
+            Stack<Integer> temp = new Stack<>();
+            int largestIndex = 0;
+            int currentIndex = 0;
+            
+            while (!stack.isEmpty())
+                temp.push(stack.pop());
+            while (!temp.isEmpty()){
+                if (temp.peek() == k){
+                    largestIndex = currentIndex;
+                }
+                currentIndex++;
+                stack.push(temp.pop());
+            }
+                
+            
+            return largestIndex;
         }
 
     }  // End class Stacks
