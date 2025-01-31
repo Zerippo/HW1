@@ -179,20 +179,23 @@ public class HW1 {
          *
          * The method should utilize the provided Stack class.
          */
-        public static boolean isPalindrome(String input) {
-            
-            Stack<Character> stack = new Stack<>();
-            input = input.toLowerCase().replaceAll("\\s+", "");
-            boolean palindrome = true;
+        public static int findLargestK(Stack<Integer> stack, int k) {
 
-            for (char c : input.toCharArray()) {
-                stack.push(c);
-            }
-            for (int i = 0; i < input.length(); i++)
-                if (input.charAt(i) != stack.pop())
-                    palindrome = false;
+            Stack<Integer> temp = new Stack<>();
+            int largestIndex = 0;
+            int currentIndex = 0;
             
-            return palindrome;
+            while (!stack.isEmpty())
+                temp.push(stack.pop());
+            while (!temp.isEmpty()){
+                if (temp.peek() == k){
+                    largestIndex = currentIndex;
+                }
+                currentIndex++;
+                stack.push(temp.pop());
+            }
+                
+            return largestIndex;
         }
 
 
